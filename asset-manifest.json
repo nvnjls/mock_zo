@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/mock_zo/static/css/main.3085673f.css",
-    "main.js": "/mock_zo/static/js/main.8addec09.js",
+    "main.css": "/mock_zo/static/css/main.f768025d.css",
+    "main.js": "/mock_zo/static/js/main.40aa6b16.js",
     "static/js/453.2d6a7542.chunk.js": "/mock_zo/static/js/453.2d6a7542.chunk.js",
     "index.html": "/mock_zo/index.html",
-    "main.3085673f.css.map": "/mock_zo/static/css/main.3085673f.css.map",
-    "main.8addec09.js.map": "/mock_zo/static/js/main.8addec09.js.map",
+    "main.f768025d.css.map": "/mock_zo/static/css/main.f768025d.css.map",
+    "main.40aa6b16.js.map": "/mock_zo/static/js/main.40aa6b16.js.map",
     "453.2d6a7542.chunk.js.map": "/mock_zo/static/js/453.2d6a7542.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3085673f.css",
-    "static/js/main.8addec09.js"
+    "static/css/main.f768025d.css",
+    "static/js/main.40aa6b16.js"
   ]
 }
