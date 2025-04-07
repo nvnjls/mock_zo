@@ -1,0 +1,12 @@
+[
+    {
+        "id": "101",
+        "title": "Advanced React Patterns",
+        "description": "Learn advanced React patterns for building scalable applications."
+    },
+    {
+        "id": "102",
+        "title": "TypeScript Fundamentals",
+        "description": "Master TypeScript for better JavaScript development."
+    }
+]
