@@ -13,7 +13,7 @@ const StatsComponent = () => {
                     {/* Left Image - Larger */}
                     <div className="lg:w-1/2 relative">
                         <img
-                            src="images/jpg/student4.jpg"
+                            src={process.env.PUBLIC_URL + "/images/jpg/student4.jpg"} // Updated path
                             alt="Anxious students preparing for interviews"
                             className="rounded-xl shadow-2xl w-full h-auto object-cover min-h-[400px]"
                         />
@@ -31,7 +31,7 @@ const StatsComponent = () => {
                             <div className="stat">
                                 <div className="stat-title font-bold text-gray-600 text-lg opacity-80">Interview Anxiety</div>
                                 <div className="stat-value text-6xl text-error">94%</div>
-                                <div className="stat-desc text-gray-600  text-lg mt-2">
+                                <div className="stat-desc text-gray-600 text-lg mt-2">
                                     of candidates experience nervousness
                                 </div>
                             </div>
@@ -40,9 +40,9 @@ const StatsComponent = () => {
                         {/* Stat 2 - Preparation Gap */}
                         <div className="stats bg-white border-2 border-error/20 shadow-lg hover:shadow-xl transition-shadow w-full">
                             <div className="stat">
-                                <div className="stat-title font-bold text-gray-600  text-lg opacity-80">Lack of Preparation</div>
+                                <div className="stat-title font-bold text-gray-600 text-lg opacity-80">Lack of Preparation</div>
                                 <div className="stat-value text-6xl text-error">78%</div>
-                                <div className="stat-desc text-gray-600  text-lg mt-2">
+                                <div className="stat-desc text-gray-600 text-lg mt-2">
                                     freshers say colleges don't provide enough mocks
                                 </div>
                             </div>
@@ -53,7 +53,7 @@ const StatsComponent = () => {
                             <div className="stat">
                                 <div className="stat-title font-bold text-gray-600 text-lg opacity-80">Success Rate</div>
                                 <div className="stat-value text-6xl text-green-600">4/5</div>
-                                <div className="stat-desc text-gray-600  text-lg mt-2">
+                                <div className="stat-desc text-gray-600 text-lg mt-2">
                                     successful candidates credit mock interviews
                                 </div>
                             </div>
