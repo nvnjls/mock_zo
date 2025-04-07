@@ -93,14 +93,14 @@ const Testimonials = () => {
         <section className="py-16 px-4 bg-gray-50 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                    <h2 className="text-3xl font-bold text-textTitle mb-4">
                         <span className="relative inline-block">
-                            <span className="absolute inset-x-0 bottom-2 h-3 bg-blue-100 opacity-75 transform -skew-x-12"></span>
+                            <span className="absolute inset-x-0 bottom-2 h-3 bg-primary-100 opacity-75 transform -skew-x-12"></span>
                             <span className="relative z-10">Success Stories</span>
                         </span>
                     </h2>
-                    <div className="w-24 h-1 bg-blue-500 mx-auto mb-6 transform -skew-x-12"></div>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    <div className="w-24 h-1 bg-primary mx-auto mb-6 transform -skew-x-12"></div>
+                    <p className="text-lg text-textPrimary max-w-2xl mx-auto">
                         Join thousands who transformed their interview performance
                     </p>
                 </div>
@@ -123,7 +123,7 @@ const Testimonials = () => {
                             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow h-full">
                                 <div className="flex items-start mb-4">
                                     <span className="text-primary text-4xl mr-2">"</span>
-                                    <p className="text-gray-700 text-lg whitespace-normal">
+                                    <p className="text-textPrimary text-lg whitespace-normal">
                                         {testimonial.quote}
                                     </p>
                                 </div>

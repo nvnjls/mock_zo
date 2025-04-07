@@ -24,13 +24,13 @@ const TargetAudience = () => {
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-3">
+                    <h2 className="text-3xl font-bold text-textTitle mb-3">
                         <span className="relative inline-block">
                             <span className="absolute inset-x-0 bottom-2 h-3 bg-purple-100 opacity-75"></span>
                             <span className="relative z-10">Who Is This For?</span>
                         </span>
                     </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-textPrimary max-w-2xl mx-auto">
                         Our platform is designed for ambitious candidates at every stage
                     </p>
                 </div>
@@ -43,9 +43,9 @@ const TargetAudience = () => {
                         >
                             <div className="mb-3 flex items-center">
                                 <div className="w-3 h-3 rounded-full bg-purple-500 mr-3"></div>
-                                <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+                                <h3 className="text-lg font-semibold text-textTitle">{item.title}</h3>
                             </div>
-                            <p className="text-gray-600 pl-6">{item.description}</p>
+                            <p className="text-textPrimary pl-6">{item.description}</p>
                         </div>
                     ))}
                 </div>

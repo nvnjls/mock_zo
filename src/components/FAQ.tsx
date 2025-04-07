@@ -30,14 +30,14 @@ const FAQ = () => {
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
             <div className="max-w-3xl mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-3">
+                    <h2 className="text-3xl font-bold text-textTitle mb-3">
                         <span className="relative inline-block">
-                            <span className="absolute inset-x-0 bottom-2 h-3 bg-blue-100 opacity-75"></span>
+                            <span className="absolute inset-x-0 bottom-2 h-3 bg-primary-100 opacity-75"></span>
                             <span className="relative z-10">FAQs</span>
                         </span>
                     </h2>
-                    <div className="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                    <p className="text-lg text-textPrimary max-w-2xl mx-auto">
                         Answers to common questions about our mock interviews
                     </p>
                 </div>
@@ -54,11 +54,11 @@ const FAQ = () => {
                                 aria-expanded={activeIndex === index}
                                 aria-controls={`faq-${index}`}
                             >
-                                <h3 className="text-lg font-medium text-gray-900">
+                                <h3 className="text-lg font-medium text-textTitle">
                                     {faq.question}
                                 </h3>
                                 <svg
-                                    className={`w-5 h-5 text-blue-500 transition-transform duration-200 ${activeIndex === index ? 'transform rotate-180' : ''}`}
+                                    className={`w-5 h-5 text-primary transition-transform duration-200 ${activeIndex === index ? 'transform rotate-180' : ''}`}
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
@@ -71,7 +71,7 @@ const FAQ = () => {
                                 id={`faq-${index}`}
                                 className={`px-6 pb-6 pt-0 transition-all duration-300 ease-in-out ${activeIndex === index ? 'block' : 'hidden'}`}
                             >
-                                <p className="text-gray-600">{faq.answer}</p>
+                                <p className="text-textPrimary">{faq.answer}</p>
                             </div>
                         </div>
                     ))}

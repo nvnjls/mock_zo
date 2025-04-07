@@ -21,8 +21,8 @@ const Navbar = () => {
                     alt="Logo"
                     className="h-8 w-8 sm:h-10 sm:w-10"
                 />
-                <span className="ml-2 text-lg sm:text-xl font-bold text-gray-700">
-                    Mockzo
+                <span className=" text-lg sm:text-xl font-bold text-primary">
+                    ockZo
                 </span>
             </div>
 
@@ -32,7 +32,7 @@ const Navbar = () => {
                     <a
                         key={link.id}
                         href={`#${link.id}`}
-                        className="text-gray-600 hover:text-primary font-medium"
+                        className="text-textPrimary hover:text-textTitle font-medium"
                     >
                         {link.label}
                     </a>
@@ -43,7 +43,7 @@ const Navbar = () => {
             <div className="sm:hidden ml-auto">
                 <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="text-gray-600 focus:outline-none"
+                    className="-textPrimary focus:outline-none"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +69,7 @@ const Navbar = () => {
                         <a
                             key={link.id}
                             href={`#${link.id}`}
-                            className="text-gray-600 hover:text-primary font-medium"
+                            className="-textPrimary hover:text-primary font-medium"
                             onClick={() => setIsMenuOpen(false)} // Close menu on click
                         >
                             {link.label}

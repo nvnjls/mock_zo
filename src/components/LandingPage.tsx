@@ -17,9 +17,9 @@ const LandingPage = () => {
 
                 {/* Two Horizontal Images */}
                 <div className="w-1/2 flex flex-col gap-4">
-                    <button className="btn bg-gradient-to-r from-primary to-secondary rounded-lg object-cover w-full h-1/3">
+                    <button className="btn bg-gradient-to-r from-primary to-blue-700 rounded-lg object-cover w-full h-1/3">
                         <h1 className="text-md md:text-3xl font-bold text-white">
-                            Book Your Mock Interview now
+                            Book Your Mock Interview now →
                         </h1>
                     </button>
                     <img
@@ -31,7 +31,7 @@ const LandingPage = () => {
             </div>
 
             {/* Left Section: Text - Will appear below images on small screens */}
-            <div className="w-full md:w-1/2 text-gray-600 flex flex-col justify-center md:px-12 bg-white order-2 md:order-1">
+            <div className="w-full md:w-1/2 text-textPrimary flex flex-col justify-center md:px-12 bg-white order-2 md:order-1">
                 <h1 className="text-center text-2xl md:text-6xl font-bold mb-4">
                     Crack Your Next <span className="gradient-text">Interview</span>, Before It Even Happens
                 </h1>

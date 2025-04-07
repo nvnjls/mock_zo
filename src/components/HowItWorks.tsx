@@ -24,8 +24,8 @@ const HowItWorks = () => {
         <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-gray-800 mb-2">How It Works</h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    <h2 className="text-3xl font-bold text-textTitle mb-2">How It Works</h2>
+                    <p className="text-lg text-textPrimary max-w-2xl mx-auto">
                         Get interview-ready with our proven 4-step process
                     </p>
                 </div>
@@ -37,12 +37,12 @@ const HowItWorks = () => {
                             className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
                         >
                             <div className="mb-4">
-                                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xl mb-3">
+                                <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center text-primary font-bold text-xl mb-3">
                                     {index + 1}
                                 </div>
-                                <h3 className="text-lg font-semibold text-gray-800">{step.title}</h3>
+                                <h3 className="text-lg font-semibold text-textTitle">{step.title}</h3>
                             </div>
-                            <p className="text-gray-600">{step.description}</p>
+                            <p className="text-textPrimary">{step.description}</p>
                         </div>
                     ))}
                 </div>
