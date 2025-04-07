@@ -9,7 +9,7 @@ const LandingPage = () => {
                 {/* Vertical Image */}
                 <div className="w-full lg:w-1/2 h-full">
                     <img
-                        src="/images/jpg/student1.jpg"
+                        src="images/jpg/student1.jpg"
                         alt="Vertical"
                         className="object-cover rounded-lg w-full h-full"
                     />
@@ -21,7 +21,7 @@ const LandingPage = () => {
                         <h1 className="text-3xl font-bold text-white">Book Your Mock Interview now</h1>
                     </button>
                     <img
-                        src="/images/jpg/student2.jpg"
+                        src="images/jpg/student2.jpg"
                         alt="Bottom Horizontal"
                         className="object-cover rounded-lg w-full h-2/3"
                     />
