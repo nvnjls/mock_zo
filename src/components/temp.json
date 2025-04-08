@@ -1,0 +1,21 @@
+{
+    "title": "Java Engineer Roadmap",
+    "description": "A comprehensive roadmap for becoming a Java engineer.",
+    "sections": [
+        {
+            "title": "core-java",
+            "items": [
+                {
+                    "title": "Java Basics",
+                    "content": {
+                        "topics": [
+                            "Variables and Data Types",
+                            "Control Flow Statements",
+                            "Methods and Functions"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,31 @@
+{
+    "title": "React Roadmap",
+    "description": "A comprehensive roadmap for becoming a React developer.",
+    "sections": [
+        {
+            "title": "core-react",
+            "items": [
+                {
+                    "title": "React Basics",
+                    "content": {
+                        "topics": [
+                            "JSX",
+                            "Components",
+                            "Props and State"
+                        ]
+                    }
+                },
+                {
+                    "title": "Advanced React",
+                    "content": {
+                        "topics": [
+                            "Hooks",
+                            "Context API",
+                            "Error Boundaries"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}
