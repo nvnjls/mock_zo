@@ -1,31 +1,12 @@
 {
-    "title": "React Roadmap",
-    "description": "A comprehensive roadmap for becoming a React developer.",
-    "sections": [
-        {
-            "title": "core-react",
-            "items": [
-                {
-                    "title": "React Basics",
-                    "content": {
-                        "topics": [
-                            "JSX",
-                            "Components",
-                            "Props and State"
-                        ]
-                    }
-                },
-                {
-                    "title": "Advanced React",
-                    "content": {
-                        "topics": [
-                            "Hooks",
-                            "Context API",
-                            "Error Boundaries"
-                        ]
-                    }
-                }
-            ]
+    "topic": "react",
+    "description": "React basics and advanced topics",
+    "longDescription": "Covers React fundamentals, hooks, and component architecture.",
+    "questions": {
+        "react_1": {
+            "id": "react_1",
+            "question": "What is useState?",
+            "answer": "useState is a React hook that lets you manage local state in functional components."
         }
-    ]
+    }
 }
