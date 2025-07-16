@@ -3,16 +3,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: 'rgb(255, 0, 132)',       // Electric Pink - main buttons/theme
-        secondary: 'rgb(0, 255, 203)',     // Aqua Flash - secondary elements
-        accent: 'rgb(255, 213, 0)',        // Lemon Zest - highlights
-        textPrimary: 'rgb(0, 38, 77)',     // Deep Space - paragraph text 
-        textTitle: 'rgb(255, 44, 107)',    // Pink Fury - headings
-        textImportant: 'rgb(255, 251, 0)', // Electric Yellow - critical text
-        background: 'rgb(255, 240, 245)',  // Cotton Candy - site background
-        foreground: 'rgb(255, 255, 255)',  // Pure White - content areas
-        border: 'rgb(179, 0, 255)',        // Purple Zap - borders/dividers
-        alert: 'rgb(255, 25, 25)',         // Fire Engine - alerts/errors
+        primary: 'rgba(0, 68, 255, 1)',
+        secondary: 'rgb(0, 255, 203)',
+        accent: 'rgb(255, 213, 0)',
+        textPrimary: 'rgb(0, 38, 77)',
+        textTitle: 'rgba(100, 100, 100, 1)',
+        textImportant: 'rgb(255, 251, 0)',
+        background: 'rgba(255, 255, 255, 1)',
+        foreground: 'rgb(255, 255, 255)',
+        border: 'rgba(98, 0, 255, 1)',
+        alert: 'rgb(255, 25, 25)',
       },
       typography: {
         DEFAULT: {
