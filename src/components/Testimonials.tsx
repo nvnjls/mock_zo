@@ -90,7 +90,7 @@ const Testimonials = () => {
     }, [paused, testimonials.length]);
 
     return (
-        <section className="py-16 px-4 bg-gray-50 overflow-hidden">
+        <section className="py-16 px-4 bg-background overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold text-textTitle mb-4">
@@ -120,7 +120,7 @@ const Testimonials = () => {
                             key={index}
                             className="inline-block w-[650px] h-[200px] px-4"
                         >
-                            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow h-full">
+                            <div className="bg-foreground p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow h-full">
                                 <div className="flex items-start mb-4">
                                     <span className="text-primary text-4xl mr-2">"</span>
                                     <p className="text-textPrimary text-lg whitespace-normal">
@@ -129,7 +129,7 @@ const Testimonials = () => {
                                 </div>
                                 <div className="border-t border-gray-100 pt-3">
                                     <p className="font-medium text-primary">{testimonial.author}</p>
-                                    <p className="text-gray-500 font-bold text-sm">{testimonial.role}</p>
+                                    <p className="text-textPrimary font-bold text-sm">{testimonial.role}</p>
                                 </div>
                             </div>
                         </div>

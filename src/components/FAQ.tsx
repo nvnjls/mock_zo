@@ -27,7 +27,7 @@ const FAQ = () => {
     };
 
     return (
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-background bg-opacity-20">
             <div className="max-w-3xl mx-auto">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold text-textTitle mb-3">
@@ -46,7 +46,7 @@ const FAQ = () => {
                     {faqs.map((faq, index) => (
                         <div
                             key={index}
-                            className={`bg-white rounded-lg shadow-sm overflow-hidden border ${activeIndex === index ? 'border-primary' : 'border-gray-200'}`}
+                            className={`bg-foreground rounded-lg shadow-sm overflow-hidden border ${activeIndex === index ? 'border-primary' : 'border-border'}`}
                         >
                             <button
                                 className="w-full flex justify-between items-center p-6 text-left focus:outline-none"

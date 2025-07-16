@@ -1,0 +1,156 @@
+{
+    "TCS-NINJA": {
+        "company": "Tata Consultancy Services",
+        "roadmap_id": "TCS-NINJA",
+        "package": "3.5 LPA",
+        "eligibility": {
+            "branches": [
+                "CSE",
+                "IT",
+                "ECE"
+            ],
+            "degrees": [
+                "B.Tech",
+                "MCA"
+            ],
+            "year": "2025",
+            "min_cgpa": "6.0"
+        },
+        "phases": {
+            "P1": {
+                "title": "Technical Round",
+                "sections": {
+                    "CL": {
+                        "title": "Coding Languages",
+                        "questions": {
+                            "Q_TCS-NINJA_P1_CL_1": {
+                                "question": "What is the difference between JDK, JRE, and JVM?",
+                                "answer": "JDK is the Java Development Kit, JRE is the Java Runtime Environment, and JVM is the Java Virtual Machine. JDK includes JRE, which includes JVM.",
+                                "type": "theory",
+                                "difficulty": "easy"
+                            },
+                            "Q_TCS-NINJA_P1_CL_2": {
+                                "question": "What is the output of the following code? int x = 5; System.out.println(++x * 2);",
+                                "options": [
+                                    "10",
+                                    "12",
+                                    "14",
+                                    "11"
+                                ],
+                                "correct_answer": "12",
+                                "type": "mcq",
+                                "difficulty": "medium"
+                            }
+                        },
+                        "quiz": {
+                            "QZ_TCS-NINJA_P1_CL_1": {
+                                "question": "What does JVM stand for?",
+                                "options": [
+                                    "Java Virtual Machine",
+                                    "Java Visual Manager",
+                                    "Joint Virtual Memory",
+                                    "Java Value Machine"
+                                ],
+                                "correct_answer": "Java Virtual Machine",
+                                "difficulty": "easy"
+                            },
+                            "QZ_TCS-NINJA_P1_CL_2": {
+                                "question": "Which of the following is not part of JDK?",
+                                "options": [
+                                    "JVM",
+                                    "Compiler",
+                                    "Debugger",
+                                    "Browser"
+                                ],
+                                "correct_answer": "Browser",
+                                "difficulty": "medium"
+                            }
+                        }
+                    },
+                    "DB": {
+                        "title": "Databases",
+                        "questions": {
+                            "Q_TCS-NINJA_P1_DB_1": {
+                                "question": "What is normalization in databases?",
+                                "answer": "Normalization is the process of organizing data to reduce redundancy and improve data integrity.",
+                                "type": "theory",
+                                "difficulty": "easy"
+                            }
+                        },
+                        "quiz": {
+                            "QZ_TCS-NINJA_P1_DB_1": {
+                                "question": "Which normal form removes partial dependency?",
+                                "options": [
+                                    "1NF",
+                                    "2NF",
+                                    "3NF",
+                                    "BCNF"
+                                ],
+                                "correct_answer": "2NF",
+                                "difficulty": "medium"
+                            }
+                        }
+                    }
+                }
+            },
+            "P2": {
+                "title": "Managerial Round",
+                "sections": {
+                    "MR": {
+                        "title": "Managerial Skills",
+                        "questions": {
+                            "Q_TCS-NINJA_P2_MR_1": {
+                                "question": "Describe a time when you handled a team conflict.",
+                                "answer": "Use the STAR method: Situation, Task, Action, Result.",
+                                "type": "subjective",
+                                "difficulty": "medium"
+                            }
+                        },
+                        "quiz": {
+                            "QZ_TCS-NINJA_P2_MR_1": {
+                                "question": "What is STAR in behavioral interviews?",
+                                "options": [
+                                    "Situation, Task, Action, Result",
+                                    "Start, Talk, Assess, Respond",
+                                    "Strategy, Task, Action, Result",
+                                    "Situation, Team, Achieve, Report"
+                                ],
+                                "correct_answer": "Situation, Task, Action, Result",
+                                "difficulty": "easy"
+                            }
+                        }
+                    }
+                }
+            },
+            "P3": {
+                "title": "HR Round",
+                "sections": {
+                    "HR": {
+                        "title": "Human Resources",
+                        "questions": {
+                            "Q_TCS-NINJA_P3_HR_1": {
+                                "question": "Why do you want to join TCS?",
+                                "answer": "Mention company values, growth opportunities, and alignment with your goals.",
+                                "type": "subjective",
+                                "difficulty": "easy"
+                            }
+                        },
+                        "quiz": {
+                            "QZ_TCS-NINJA_P3_HR_1": {
+                                "question": "What is the best way to answer: 'Tell me about yourself'?",
+                                "options": [
+                                    "Start with childhood stories",
+                                    "Talk only about hobbies",
+                                    "Give a short summary of education, strengths, and goals",
+                                    "Mention family background"
+                                ],
+                                "correct_answer": "Give a short summary of education, strengths, and goals",
+                                "difficulty": "easy"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

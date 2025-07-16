@@ -13,7 +13,7 @@ const Navbar = () => {
     ];
 
     return (
-        <div className="fixed top-2 left-2 right-2 h-16 bg-gray-100 shadow-lg rounded-lg z-50 flex items-center px-4 sm:px-8">
+        <div className="fixed top-2 left-2 right-2 h-16 bg-background shadow-lg rounded-lg z-50 flex items-center px-4 sm:px-8">
             {/* Logo */}
             <div className="flex items-center">
                 <img

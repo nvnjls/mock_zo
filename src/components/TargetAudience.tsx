@@ -39,7 +39,7 @@ const TargetAudience = () => {
                     {audience.map((item, index) => (
                         <div
                             key={index}
-                            className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+                            className="bg-background p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
                         >
                             <div className="mb-3 flex items-center">
                                 <div className="w-3 h-3 rounded-full bg-purple-500 mr-3"></div>
