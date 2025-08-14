@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import Content from './components/Content';
-import LandingPage from './components/XXXLandingPage';
-import Navbar from './components/Nav';
-import HowItWorks from './components/HowItWorks';
+import Content from './StaticComponents/Content';
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import StudentDashboard from './DynamicPages/StudentDashboard';
+import Onboarding from './DynamicPages/Onboarding';
+import AdminPanel from './Admin/AdminPanel';
 
 
 const App = () => {
@@ -36,9 +37,14 @@ const App = () => {
   }, []);
 
   return (
-    <div className="relative">
-      <Content />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/onboarding" element={<Onboarding />} />
+        <Route path="/" element={<Content />} />
+        <Route path="/dashboard" element={<StudentDashboard />} />
+        <Route path="/admin" element={<AdminPanel />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

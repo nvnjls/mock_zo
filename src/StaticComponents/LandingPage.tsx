@@ -1,9 +1,41 @@
-// src/components/HeroBanner.tsx
+// src/StaticComponents/LandingPage.tsx
+import React, { useCallback, useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
+import AuthModal, { openAuthModal } from "./AuthModal";
+import { auth } from "../Lib/Firebase";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+
+const db = getFirestore();
 
 export default function LandingPage() {
     // Gradient variable for easy testing
     const gradient = "bg-gradient-to-b from-primary to-secondary";
+
+    const [user, setUser] = useState<User | null>(null);
+    useEffect(() => {
+        const unsub = onAuthStateChanged(auth, (u) => setUser(u));
+        return () => unsub();
+    }, []);
+
+    const openAuth = useCallback(async () => {
+        if (user) {
+            try {
+                const userDocRef = doc(db, "users", user.uid);
+                const snap = await getDoc(userDocRef);
+                if (snap.exists() && snap.data()?.bookingDone) {
+                    window.location.href = "/dashboard";
+                } else {
+                    window.location.href = "/onboarding";
+                }
+            } catch (e) {
+                console.error("Failed to get booking status", e);
+                window.location.href = "/onboarding";
+            }
+        } else {
+            openAuthModal();
+        }
+    }, [user]);
 
     return (
         <section
@@ -41,14 +73,16 @@ export default function LandingPage() {
 
                         {/* CTAs */}
                         <div className="mt-8 flex flex-wrap gap-3">
-                            <a
-                                href="#register"
+                            <button
+                                type="button"
+                                onClick={openAuth}
                                 className="group inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-indigo-800 shadow-lg transition hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-700"
+                                aria-haspopup="dialog"
+                                aria-controls="auth-modal"
                             >
                                 Get Started
                                 <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-0.5" />
-                            </a>
-
+                            </button>
                             <a
                                 href="#how"
                                 className="inline-flex items-center justify-center rounded-xl border border-white/70 bg-white/0 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-700"
@@ -87,6 +121,10 @@ export default function LandingPage() {
                     </div>
                 </div>
             </div>
+
+            {/* Mount the shared AuthModal once (effects run even when closed) */}
+            <AuthModal />
         </section>
     );
 }
+

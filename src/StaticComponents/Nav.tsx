@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { auth } from "../Lib/Firebase";
+import { openAuthModal } from "./AuthModal";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+
+const db = getFirestore();
 
 const Navbar = () => {
     const [activeId, setActiveId] = useState<"home" | "how" | "contact">("home");
+    const [user, setUser] = useState<User | null>(null);
 
     const handleNavClick = (id: string) => (e: React.MouseEvent) => {
         e.preventDefault();
@@ -42,6 +49,30 @@ const Navbar = () => {
         monitored.forEach((el) => obs.observe(el));
         return () => obs.disconnect();
     }, [activeId]);
+
+    useEffect(() => {
+        const unsub = onAuthStateChanged(auth, (u) => setUser(u));
+        return () => unsub();
+    }, []);
+
+    const handleCtaClick = async () => {
+        if (user) {
+            try {
+                const userDocRef = doc(db, "users", user.uid);
+                const snap = await getDoc(userDocRef);
+                if (snap.exists() && snap.data()?.bookingDone) {
+                    window.location.href = "/dashboard";
+                } else {
+                    window.location.href = "/onboarding";
+                }
+            } catch (e) {
+                console.error("Failed to get booking status", e);
+                window.location.href = "/onboarding";
+            }
+        } else {
+            openAuthModal();
+        }
+    };
 
     const island = "flex items-center ";
 
@@ -85,10 +116,11 @@ const Navbar = () => {
                 {/* Buttons Container */}
                 <div className={`${island} ml-auto p-0 px-4 py-2 space-x-4 overflow-hidden`}>
                     <button
+                        onClick={handleCtaClick}
                         className="flex-1 h-full flex items-center justify-center rounded-2xl bg-primary text-white font-medium"
                     >
                         <div className="px-3 py-1 bg-primary rounded-md">
-                            Sign In / Up
+                            {user ? "Dashboard" : "Sign In / Up"}
                         </div>
                     </button>
                 </div>

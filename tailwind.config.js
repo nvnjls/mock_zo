@@ -5,7 +5,7 @@ module.exports = {
       colors: {
         primary: 'rgba(59, 130, 246, 1)',
         secondary: 'rgba(139, 92, 246, 1)',
-        accent: 'rgb(254,223,154)',
+        accent: 'rgb(246, 175, 59)',
         textPrimary: 'rgb(0, 38, 77)',
         textTitle: 'rgba(100, 100, 100, 1)',
         textImportant: 'rgb(255, 251, 0)',
