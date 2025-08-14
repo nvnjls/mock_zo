@@ -1,46 +1,92 @@
-import React from "react";
-import Navbar from "./Nav";
+// src/components/HeroBanner.tsx
+import { ArrowRight } from "lucide-react";
 
-const LandingPage = () => {
+export default function LandingPage() {
+    // Gradient variable for easy testing
+    const gradient = "bg-gradient-to-b from-primary to-secondary";
+
     return (
-        <section className="flex flex-col md:flex-row h-screen pl-4 pr-4 md:pl-24 md:pr-24 w-full items-center justify-center">
-            {/* Right Section: Images - Square container */}
-            <div className="w-full md:w-1/2 aspect-square gap-4 flex flex-row order-1 md:order-2 mb-8 md:mb-0">
-                {/* Vertical Image */}
-                <div className="w-1/2 h-full">
-                    <img
-                        src={process.env.PUBLIC_URL + "/images/jpg/student1.jpg"}
-                        alt="Vertical"
-                        className="object-cover rounded-lg w-full h-full"
-                    />
-                </div>
+        <section
+            id="home"
+            className={`relative isolate overflow-hidden ${gradient} text-white`}
+            aria-label="MockZo interview prep hero"
+        >
+            {/* Decorative grid fade */}
+            <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-15 [mask-image:radial-gradient(60%_60%_at_50%_30%,#000_40%,transparent_100%)]"
+                style={{
+                    backgroundImage:
+                        "linear-gradient(transparent 0.75px, rgba(255,255,255,.08) 0.75px), linear-gradient(90deg, transparent 0.75px, rgba(255,255,255,.08) 0.75px)",
+                    backgroundSize: "22px 22px",
+                }}
+            />
 
-                {/* Two Horizontal Images */}
-                <div className="w-1/2 flex flex-col gap-4">
-                    <button className="btn bg-gradient-to-r from-primary to-blue-700 rounded-lg object-cover w-full h-1/3">
-                        <h1 className="text-md md:text-3xl font-bold text-textImportant">
-                            Book Your Mock Interview now →
+            <div className="mx-auto max-w-7xl px-4 py-20 sm:py-24 lg:py-28">
+                <div className="grid items-center gap-10 lg:grid-cols-2">
+                    {/* Copy */}
+                    <div>
+                        <p className="mb-3 inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-medium tracking-wide backdrop-blur">
+                            • Mock interviews • workshops • internships
+                        </p>
+
+                        <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
+                            Crack Your Next <span className="text-accent">Interview</span>, <span className="whitespace-nowrap">Before It Even Happens</span>
                         </h1>
-                    </button>
-                    <img
-                        src={process.env.PUBLIC_URL + "/images/jpg/student2.jpg"}
-                        alt="Bottom Horizontal"
-                        className="object-cover rounded-lg w-full h-2/3"
-                    />
-                </div>
-            </div>
 
-            {/* Left Section: Text - Will appear below images on small screens */}
-            <div className="w-full md:w-1/2 text-textPrimary flex flex-col justify-center md:px-12 bg-background order-2 md:order-1">
-                <h1 className="text-center text-2xl md:text-6xl font-bold mb-4">
-                    Crack Your Next <span className="gradient-text">Interview</span>, Before It Even Happens
-                </h1>
-                <p className="text-center text-lg md:text-2xl mb-6">
-                    Practice with the exact format, questions, and feedback tailored to your dream job.
-                </p>
+                        <p className="mt-4 max-w-prose text-indigo-100/90">
+                            Practice with real interviewers, get instant feedback, and level up with
+                            short workshops. Join MockZo and turn anxiety into muscle memory.
+                        </p>
+
+                        {/* CTAs */}
+                        <div className="mt-8 flex flex-wrap gap-3">
+                            <a
+                                href="#register"
+                                className="group inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-indigo-800 shadow-lg transition hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-700"
+                            >
+                                Get Started
+                                <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-0.5" />
+                            </a>
+
+                            <a
+                                href="#how"
+                                className="inline-flex items-center justify-center rounded-xl border border-white/70 bg-white/0 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-700"
+                            >
+                                Try a Mock in 3 min
+                            </a>
+                        </div>
+
+                        {/* Trust row */}
+                        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-indigo-100/80">
+                            <span>◆ Avg. feedback in &lt; 10 min</span>
+                            <span>◆ 50k+ practice questions</span>
+                            <span>◆ Built for campus placements</span>
+                        </div>
+                    </div>
+
+                    {/* Art / Screenshot */}
+                    <div className="relative">
+                        <div className="mx-auto max-w-md overflow-hidden rounded-2xl bg-white/5 p-2 shadow-2xl ring-1 ring-white/10">
+                            <img
+                                src="/images/jpg/student2.jpg"
+                                srcSet="/images/jpg/student2.jpg 512w, /images/jpg/student2.jpg 768w, /images/jpg/student2.jpg 1280w"
+                                sizes="(min-width: 1024px) 560px, (min-width: 640px) 70vw, 92vw"
+                                alt="img"
+                                className=" h-auto w-full rounded-xl"
+                                loading="eager"
+                                width={768}
+                                height={528}
+                            />
+                        </div>
+
+                        {/* Small stat badge */}
+                        <div className="absolute -bottom-4 right-2 hidden rounded-xl bg-white/90 px-4 py-2 text-sm font-semibold text-indigo-900 shadow lg:block">
+                            92% feel more confident after 2 mocks
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     );
-};
-
-export default LandingPage;
+}

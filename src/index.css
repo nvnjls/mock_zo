@@ -27,7 +27,7 @@
 
 @layer components {
   .gradient-text {
-    background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
+    background-image: linear-gradient(to right, rgba(59, 130, 246, 1), #8b5cf6);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

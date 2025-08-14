@@ -1,76 +1,106 @@
-import React from "react";
+// src/components/WhyChooseUs.tsx
+import { MessageSquare, Timer, GraduationCap, Star } from "lucide-react";
 
-const WhyChooseUs = () => {
-    const features = [
+export default function WhyChooseUs() {
+    const benefits = [
         {
-            title: "Built for Freshers & Students",
-            description: "We know how nerve-wracking interviews can be. We prepare you for your very first."
+            icon: <MessageSquare className="size-5" aria-hidden="true" />,
+            title: "Realistic Mock Interviews",
+            desc: "Practiced with industry-aligned scenarios and detailed feedback from mentors.",
         },
         {
-            title: "Job Description Based Matching",
-            description: "Practice questions tailored to the exact job you're applying for."
+            icon: <Timer className="size-5" aria-hidden="true" />,
+            title: "Learn Fast, Improve Faster",
+            desc: "Quick, actionable feedback loops tailored for efficient growth.",
         },
         {
-            title: "Real Industry Experts",
-            description: "Get interviewed by professionals who've sat on the other side of the table."
+            icon: <GraduationCap className="size-5" aria-hidden="true" />,
+            title: "Skill-Building Workshops",
+            desc: "Focused sessions on high-impact topics like behavioral cues, technical questions, and confidence building.",
+        },
+    ];
+
+    const futureProofs = [
+        {
+            icon: <Star className="size-4" aria-hidden="true" />,
+            title: "Your First Advantage",
+            desc: "Feel confident walking into any interview—practice beats pressure.",
         },
         {
-            title: "Detailed Feedback + Recording",
-            description: "Learn from your mistakes. Build confidence. Track your progress."
+            icon: <Star className="size-4" aria-hidden="true" />,
+            title: "Built For You",
+            desc: "Crafted with the 18–21 learner in mind—straightforward, interactive, and startup-focused.",
         },
         {
-            title: "Flexible Scheduling",
-            description: "You choose the time. We make it happen."
-        }
+            icon: <Star className="size-4" aria-hidden="true" />,
+            title: "Future Metrics",
+            desc: "Soon: track your mock completion, confidence boosts, and placement readiness (we’re building this!).",
+        },
     ];
 
     return (
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-background">
-            <div className="max-w-5xl mx-auto">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold -textTitle mb-4">
-                        <span className="relative inline-block">
-                            <span className="absolute inset-x-0 bottom-2 h-3 bg-primary-100 opacity-75"></span>
-                            <span className="relative text-textPrimary z-10">Why Choose Us</span>
-                        </span>
+        <section id="why-us" aria-labelledby="why-us-title" className="bg-background2 py-16">
+            <div className="mx-auto max-w-7xl px-4 lg:px-6">
+                <div className="mb-10 text-center">
+                    <p className="inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700">
+                        Designed for Students • Mock Interviews & Prep
+                    </p>
+                    <h2 id="why-us-title" className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
+                        Why Choose <span className="text-indigo-700">MockZo</span>?
                     </h2>
-                    <div className="w-20 h-1 bg-primary mx-auto"></div>
+                    <p className="mt-4 text-gray-700 max-w-2xl mx-auto">
+                        You're at the start of your career. No past stats—just real tools, practice, and a clear path toward success.
+                    </p>
                 </div>
 
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    {features.slice(0, 3).map((feature, index) => (
-                        <div key={index} className="bg-foreground p-6 rounded-xl border border-border hover:border-primary transition-all">
-                            <div className="flex items-start">
-                                <div className="flex-shrink-0 bg-primary-100 p-3 rounded-lg mr-4">
-                                    <div className="w-6 h-6 bg-primary rounded-full"></div>
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-semibold text-textTitle mb-2">{feature.title}</h3>
-                                    <p className="text-textPrimary">{feature.description}</p>
-                                </div>
+                {/* Benefits */}
+                <div className="grid gap-5 sm:grid-cols-3">
+                    {benefits.map((b) => (
+                        <div
+                            key={b.title}
+                            className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:shadow-md focus-within:ring-2 focus-within:ring-indigo-600"
+                        >
+                            <div className="rounded-xl bg-indigo-50 p-2 text-indigo-700 inline-flex">
+                                {b.icon}
                             </div>
+                            <h3 className="mt-4 text-lg font-semibold text-gray-900">{b.title}</h3>
+                            <p className="mt-1 text-gray-600 text-sm">{b.desc}</p>
                         </div>
                     ))}
                 </div>
 
-                <div className="grid gap-8 md:grid-cols-2 mt-8">
-                    {features.slice(3).map((feature, index) => (
-                        <div key={index} className="bg-foreground  p-6 rounded-xl border border-border hover:border-primary transition-all">
-                            <div className="flex items-start">
-                                <div className="flex-shrink-0 bg-primary-100 p-3 rounded-lg mr-4">
-                                    <div className="w-6 h-6 bg-primary rounded-full"></div>
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-semibold text-textTitle mb-2">{feature.title}</h3>
-                                    <p className="text-textPrimary">{feature.description}</p>
-                                </div>
+                {/* Forward-Looking Proofs */}
+                <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                    {futureProofs.map((p) => (
+                        <div
+                            key={p.title}
+                            className="rounded-xl bg-indigo-600/5 p-5 ring-1 ring-indigo-600/10"
+                        >
+                            <div className="flex items-center gap-2 text-indigo-800">
+                                {p.icon}
+                                <span className="text-xs uppercase tracking-wide">{p.title}</span>
                             </div>
+                            <p className="mt-1 text-gray-900 text-sm">{p.desc}</p>
                         </div>
                     ))}
+                </div>
+
+                {/* CTA */}
+                <div className="mt-12 flex flex-col items-center gap-3">
+                    <a
+                        href="#register"
+                        className="inline-flex items-center justify-center rounded-xl bg-indigo-700 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-indigo-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-700"
+                    >
+                        Join as a Beta Tester
+                    </a>
+                    <a
+                        href="#how"
+                        className="text-sm font-medium text-indigo-700 underline underline-offset-4 hover:text-indigo-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-700"
+                    >
+                        Learn How It Works
+                    </a>
                 </div>
             </div>
         </section>
     );
-};
-
-export default WhyChooseUs;
+}

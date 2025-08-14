@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Content from './components/Content';
-import LandingPage from './components/LandingPage';
+import LandingPage from './components/XXXLandingPage';
 import Navbar from './components/Nav';
 import HowItWorks from './components/HowItWorks';
 
@@ -37,7 +37,6 @@ const App = () => {
 
   return (
     <div className="relative">
-      <Navbar />
       <Content />
     </div>
   );

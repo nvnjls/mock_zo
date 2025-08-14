@@ -46,7 +46,7 @@ const FAQ = () => {
                     {faqs.map((faq, index) => (
                         <div
                             key={index}
-                            className={`bg-foreground rounded-lg shadow-sm overflow-hidden border ${activeIndex === index ? 'border-primary' : 'border-border'}`}
+                            className={`bg-foreground rounded-lg shadow-sm overflow-hidden border ${activeIndex !== index ? 'border-textTitle' : 'border-primary'}`}
                         >
                             <button
                                 className="w-full flex justify-between items-center p-6 text-left focus:outline-none"

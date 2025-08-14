@@ -3,16 +3,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: 'rgba(0, 68, 255, 1)',
-        secondary: 'rgb(0, 255, 203)',
-        accent: 'rgb(255, 213, 0)',
+        primary: 'rgba(59, 130, 246, 1)',
+        secondary: 'rgba(139, 92, 246, 1)',
+        accent: 'rgb(254,223,154)',
         textPrimary: 'rgb(0, 38, 77)',
         textTitle: 'rgba(100, 100, 100, 1)',
         textImportant: 'rgb(255, 251, 0)',
-        background: 'rgba(255, 255, 255, 1)',
+        background: 'rgba(240, 240, 240, 1)',
+        background2: 'rgba(255, 255, 255, 1)',
         foreground: 'rgb(255, 255, 255)',
         border: 'rgba(98, 0, 255, 1)',
-        alert: 'rgb(255, 25, 25)',
+        alert: 'rgba(255, 25, 25, 1)',
+        transparent: 'rgba(0, 0, 0, 0)',
       },
       typography: {
         DEFAULT: {
