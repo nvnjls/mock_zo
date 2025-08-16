@@ -77,7 +77,7 @@ const AdminLogin: React.FC = () => {
                 </button>
 
                 <div className="text-xs text-slate-400/80">
-                    We verify against <code>admins/&lt;lowercased-email&gt;</code> in Firestore.
+                    if you are not an admin, <a href="https://www.mockzo.com" className="underline hover:text-emerald-400">click here</a>
                 </div>
 
                 <div className="text-xs text-slate-400/80">
