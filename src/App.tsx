@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Content from './StaticComponents/Content';
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Router, Routes } from 'react-router-dom';
 import StudentDashboard from './DynamicPages/StudentDashboard';
 import Onboarding from './DynamicPages/Onboarding';
 import AdminPanel from './Admin/AdminPanel';
-
+import AdminRoute from './Admin/AdminRoute';
+import AdminLogin from './Admin/AdminLogin';
 
 const App = () => {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -42,7 +43,18 @@ const App = () => {
         <Route path="/onboarding" element={<Onboarding />} />
         <Route path="/" element={<Content />} />
         <Route path="/dashboard" element={<StudentDashboard />} />
-        <Route path="/admin" element={<AdminPanel />} />
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute>
+              <AdminPanel />
+            </AdminRoute>
+          }
+        />
+        {/* Optional direct login page */}
+        <Route path="/admin-login" element={<AdminLogin />} />
+        {/* Default: send unknown routes to /NotFound for now */}
+        <Route path="*" element={<Navigate to="/NotFound" replace />} />
       </Routes>
     </BrowserRouter>
   );

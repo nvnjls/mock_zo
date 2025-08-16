@@ -1,11 +1,12 @@
-// src/lib/firebase.ts
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth, setPersistence, browserLocalPersistence } from "firebase/auth";
+// src/Lib/Firebase.ts
+import { initializeApp, getApps, FirebaseApp } from "firebase/app";
+import {
+    getAuth,
+    RecaptchaVerifier,
+    Auth,
+} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-/**
- * Single source of truth for Firebase config.
- * Uses your known-good config; replace with envs later if needed.
- */
+
 const firebaseConfig = {
     apiKey: "AIzaSyAqkjaKotQE89Zd8yv_rxJL1wI109qMwtM",
     authDomain: "mockzo-india.firebaseapp.com",
@@ -16,12 +17,64 @@ const firebaseConfig = {
     measurementId: "G-7QC6JY24J7",
 };
 
-// Initialize (idempotent)
-export const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+/// --- Single Firebase app ---
+let app: FirebaseApp;
+if (!getApps().length) {
+    app = initializeApp(firebaseConfig);
+} else {
+    app = getApps()[0]!;
+}
+
+// --- Single Auth + Firestore ---
+export const auth: Auth = getAuth(app);
 export const db = getFirestore(app);
 
-// Auth (LOCAL persistence keeps users logged in)
-export const auth = getAuth(app);
-setPersistence(auth, browserLocalPersistence).catch(() => {
-    /* ignore */
-});
+// OPTIONAL: enable test numbers bypass in dev (NO effect in prod)
+// Set your test numbers in Firebase Console → Auth → Phone → Test numbers
+if (typeof window !== "undefined") {
+    const isLocalhost = /^(localhost|127\.0\.0\.1)/.test(window.location.hostname);
+    try {
+        // Only affect dev; in prod this does nothing harmful if left on false
+        (auth as any).settings = (auth as any).settings || {};
+        (auth as any).settings.appVerificationDisabledForTesting = isLocalhost;
+    } catch { }
+}
+
+// --- Recaptcha management ---
+let recaptcha: RecaptchaVerifier | null = null;
+
+// internal guard that the container exists and we are in browser
+function assertEnv() {
+    if (typeof window === "undefined") {
+        throw new Error("reCAPTCHA requires a browser environment.");
+    }
+    if (!document.getElementById("recaptcha-container")) {
+        throw new Error("reCAPTCHA container #recaptcha-container is missing in the DOM.");
+    }
+}
+
+export const ensureRecaptcha = async (visibleFallback = false): Promise<RecaptchaVerifier> => {
+    assertEnv();
+
+    // Destroy broken or mismatched instances
+    const anyRec = recaptcha as any;
+    if (anyRec?.destroyed) recaptcha = null;
+
+    if (!recaptcha) {
+        recaptcha = new RecaptchaVerifier(auth, "recaptcha-container", {
+            size: visibleFallback ? "normal" : "invisible",
+            callback: () => { },
+            "expired-callback": () => {
+                try { (recaptcha as any)?.reset?.(); } catch { }
+            },
+        });
+        // MUST render once
+        try { await recaptcha.render(); } catch { }
+    }
+    return recaptcha!;
+};
+
+export const resetRecaptcha = () => {
+    try { (recaptcha as any)?.clear?.(); } catch { }
+    recaptcha = null;
+};
