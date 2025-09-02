@@ -9,11 +9,12 @@ import Navbar from './Nav';
 import WhyCandidatesFail from './WhyStudentsFail';
 import ContactUs from './ContactUs';
 import LandingPage from './LandingPage';
+import ContactUsStatic from './ContactUsStatic';
 
 const Content = forwardRef<HTMLDivElement>((props, ref) => {
     return (
         <div id="main" className="bg-background h-screen w-full p-1 flex items-center justify-center">
-            <div id="content" className="bg-background pt-8 w-full h-full rounded-xl overflow-y-scroll no-scrollbar scroll-smooth snap-y snap-mandatory snap-always overscroll-none">
+            <div id="content" className="bg-background  w-full h-full rounded-xl overflow-y-scroll no-scrollbar scroll-smooth snap-y snap-mandatory snap-always overscroll-none">
                 <Navbar />
                 <section id="home" className="snap-start scroll-mt-24 last:mb-0"><LandingPage /></section>
                 <section id="how" className="snap-start scroll-mt-24 last:mb-0"><HowItWorks /></section>
@@ -22,6 +23,7 @@ const Content = forwardRef<HTMLDivElement>((props, ref) => {
                 <section id="stories" className="snap-start scroll-mt-24 last:mb-0"><Testimonials /></section>
                 <section id="faq" className="snap-start scroll-mt-24 last:mb-0"><FAQ /></section>
                 <section id="contact" className="snap-start scroll-mt-24 last:mb-0"><ContactUs /></section>
+                <section id="contact-new" className="snap-start scroll-mt-24 last:mb-0"><ContactUsStatic /></section>
             </div >
         </div >
     );

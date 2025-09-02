@@ -9,10 +9,11 @@ import { InterviewerDoc } from "./types";
 import { startOfWeek } from "./utils/date";
 import SlotsTab from "./slots/SlotsTab";
 import InterviewersTab from "./interviewers/InterviewersTab";
+import InternshipsTab from "./internships/InternshipsTab";
 
 export default function AdminPanel() {
     const [user, setUser] = useState<User | null>(null);
-    const [activeTab, setActiveTab] = useState<"slots" | "interviewers">("slots");
+    const [activeTab, setActiveTab] = useState<"slots" | "interviewers" | "internships">("slots");
     const [weekStart, setWeekStart] = useState(startOfWeek(new Date()));
     const [interviewers, setInterviewers] = useState<(InterviewerDoc & { id: string })[]>([]);
     const [loadingInterviewers, setLoadingInterviewers] = useState(true);
@@ -72,8 +73,8 @@ export default function AdminPanel() {
                     <div className="flex flex-col gap-2">
                         <button
                             className={`w-full rounded-xl px-3 py-2 text-left text-sm transition-colors ${activeTab === "slots"
-                                    ? "bg-emerald-400 text-slate-900 font-semibold shadow ring-1 ring-emerald-300/70"
-                                    : "bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10"
+                                ? "bg-emerald-400 text-slate-900 font-semibold shadow ring-1 ring-emerald-300/70"
+                                : "bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10"
                                 }`}
                             onClick={() => setActiveTab("slots")}
                         >
@@ -81,12 +82,21 @@ export default function AdminPanel() {
                         </button>
                         <button
                             className={`w-full rounded-xl px-3 py-2 text-left text-sm transition-colors ${activeTab === "interviewers"
-                                    ? "bg-emerald-400 text-slate-900 font-semibold shadow ring-1 ring-emerald-300/70"
-                                    : "bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10"
+                                ? "bg-emerald-400 text-slate-900 font-semibold shadow ring-1 ring-emerald-300/70"
+                                : "bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10"
                                 }`}
                             onClick={() => setActiveTab("interviewers")}
                         >
                             Interviewers
+                        </button>
+                        <button
+                            className={`w-full rounded-xl px-3 py-2 text-left text-sm transition-colors ${activeTab === "internships"
+                                ? "bg-emerald-400 text-slate-900 font-semibold shadow ring-1 ring-emerald-300/70"
+                                : "bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10"
+                                }`}
+                            onClick={() => setActiveTab("internships")}
+                        >
+                            Internships
                         </button>
                     </div>
                 </aside>
@@ -99,8 +109,10 @@ export default function AdminPanel() {
                             interviewers={interviewers}
                             loadingInterviewers={loadingInterviewers}
                         />
-                    ) : (
+                    ) : activeTab === "interviewers" ? (
                         <InterviewersTab />
+                    ) : (
+                        activeTab === "internships" && <InternshipsTab />
                     )}
                 </section>
             </div>

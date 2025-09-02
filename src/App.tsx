@@ -2,10 +2,10 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import Content from './StaticComponents/Content';
 import { BrowserRouter, Navigate, Route, Router, Routes } from 'react-router-dom';
 import StudentDashboard from './DynamicPages/StudentDashboard';
-import Onboarding from './DynamicPages/Onboarding';
 import AdminPanel from './Admin/AdminPanel';
 import AdminRoute from './Admin/AdminRoute';
 import AdminLogin from './Admin/AdminLogin';
+import OnboardingPage from './DynamicPages/Onboarding/Components/OnboardingPage';
 
 const App = () => {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -40,7 +40,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/onboarding" element={<Onboarding />} />
+        <Route path="/onboarding" element={<OnboardingPage />} />
         <Route path="/" element={<Content />} />
         <Route path="/dashboard" element={<StudentDashboard />} />
         <Route

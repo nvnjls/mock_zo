@@ -78,7 +78,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="fixed top-1 left-1 right-1 h-16 bg-background2 shadow-lg rounded-xl z-50 flex items-center px-4 sm:px-8">
+            <div className="fixed top-8 left-8 right-8 h-16 bg-background2 shadow-lg rounded-xl z-50 flex items-center px-4 sm:px-8">
                 {/* Logo */}
                 <div className={island}>
                     <div className="flex items-center gap-x-4">
