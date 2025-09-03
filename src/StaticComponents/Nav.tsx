@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useMemo } from "react";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "../Lib/Firebase";
 import { openAuthModal } from "./AuthModal";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { HiHome, HiUserAdd, HiMail } from "react-icons/hi";
 
 const db = getFirestore();
 
@@ -10,50 +11,75 @@ const Navbar = () => {
     const [activeId, setActiveId] = useState<"home" | "how" | "contact">("home");
     const [user, setUser] = useState<User | null>(null);
 
-    const handleNavClick = (id: string) => (e: React.MouseEvent) => {
-        e.preventDefault();
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-        setActiveId(id as any);
-    };
+    const navRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+
+    const INDICATOR_WIDTH = 48;
 
     // Map labels to actual section IDs
     const navLinks = [
-        { id: "home", label: "About" },       // landing / hero
-        { id: "how", label: "Register" },    // how it works
-        { id: "contact", label: "Contact" }, // contact us
+        { id: "home", label: "About", icon: HiHome },       // landing / hero
+        { id: "how", label: "Register", icon: HiUserAdd },    // how it works
+        { id: "contact", label: "Contact", icon: HiMail }, // contact us
     ];
 
-    useEffect(() => {
-        // Observe sections inside the scrollable content container
-        const root = document.getElementById("content");
-        if (!root) return;
+    const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
 
-        const monitored = ["home", "how", "contact"]
+    useEffect(() => {
+        const handleResizeOrScroll = () => {
+            const el = navRefs.current[activeId];
+            if (el) {
+                const rect = el.getBoundingClientRect();
+                const containerRect = el.parentElement?.getBoundingClientRect();
+                if (containerRect) {
+                    setIndicatorStyle({
+                        left: rect.left - containerRect.left,
+                        width: rect.width,
+                    });
+                }
+            }
+        };
+
+        handleResizeOrScroll();
+        window.addEventListener("resize", handleResizeOrScroll);
+        return () => window.removeEventListener("resize", handleResizeOrScroll);
+    }, [activeId]);
+
+    useEffect(() => {
+        const sections = ["home", "how", "contact"]
             .map((id) => document.getElementById(id))
             .filter(Boolean) as Element[];
 
-        const obs = new IntersectionObserver(
+        const observer = new IntersectionObserver(
             (entries) => {
-                // Find the entry most in view
-                const visible = entries
+                const mostVisible = entries
                     .filter((e) => e.isIntersecting)
                     .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-                if (visible && visible.target.id !== activeId) {
-                    setActiveId(visible.target.id as any);
+                if (mostVisible && mostVisible.target.id !== activeId) {
+                    setActiveId(mostVisible.target.id as any);
                 }
             },
-            { root, threshold: [0.25, 0.5, 0.75] }
+            {
+                root: document.getElementById("content"),
+                threshold: [0.4, 0.6, 0.9],
+            }
         );
 
-        monitored.forEach((el) => obs.observe(el));
-        return () => obs.disconnect();
+        sections.forEach((section) => observer.observe(section));
+        return () => observer.disconnect();
     }, [activeId]);
 
     useEffect(() => {
         const unsub = onAuthStateChanged(auth, (u) => setUser(u));
         return () => unsub();
     }, []);
+
+    const handleNavClick = (id: string) => (e: React.MouseEvent) => {
+        e.preventDefault();
+        const el = document.getElementById(id);
+        if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
 
     const handleCtaClick = async () => {
         if (user) {
@@ -78,50 +104,48 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="fixed top-8 left-8 right-8 h-16 bg-background2 shadow-lg rounded-xl z-50 flex items-center px-4 sm:px-8">
-                {/* Logo */}
-                <div className={island}>
-                    <div className="flex items-center gap-x-4">
-                        <img
-                            src={process.env.PUBLIC_URL + "/images/svg/logo.svg"}
-                            alt="Logo"
-                            className="h-8 w-8 sm:h-10 sm:w-10 "
-                        />
-                        <span className=" text-lg sm:text-xl font-bold text-primary">
-                            MockZo
-                        </span>
+            <div className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between w-full shadow-sm">
+                <div className="flex items-center gap-x-6">
+                    <div className="flex items-center gap-x-2 font-bold text-lg text-black">
+                        <img src={process.env.PUBLIC_URL + "/images/svg/logo.svg"} alt="Logo" className="h-6 w-6" />
+                        MockZo
+                    </div>
+
+                    {/* Navigation */}
+                    <div className="relative flex items-center gap-x-3 bg-gray-100 rounded-full px-2 py-1">
+                        {/* Moving background indicator */}
+                        <div
+                            className="absolute h-[36px] rounded-full bg-white shadow transition-all duration-300 ease-in-out"
+                            style={{
+                                left: `${indicatorStyle.left}px`,
+                                width: `${indicatorStyle.width}px`,
+                            }}
+                        ></div>
+                        {navLinks.map((link) => {
+                            const isActive = activeId === link.id;
+                            return (
+                                <button
+                                    key={link.id}
+                                    onClick={handleNavClick(link.id)}
+                                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${isActive ? "text-black" : "text-gray-500 hover:text-black"
+                                        }`}
+                                    ref={(el) => { navRefs.current[link.id] = el; }}
+                                    style={{ position: "relative", zIndex: 10 }}
+                                >
+                                    {link.label}
+                                </button>
+                            );
+                        })}
                     </div>
                 </div>
 
-                {/* Navigation Links Container */}
-                <div className="hidden md:flex flex-1 justify-center">
-                    <div className={`${island} px-4 space-x-8`}>
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.id}
-                                href={`#${link.id}`}
-                                onClick={handleNavClick(link.id)}
-                                aria-current={activeId === link.id ? "page" : undefined}
-                                className={`font-medium px-2 transition-colors ${activeId === link.id
-                                    ? "text-primary"
-                                    : "text-textTitle hover:text-primary"
-                                    }`}
-                            >
-                                {link.label}
-                            </a>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Buttons Container */}
-                <div className={`${island} ml-auto p-0 px-4 py-2 space-x-4 overflow-hidden`}>
+                {/* CTA Buttons */}
+                <div className="flex items-center gap-x-3">
                     <button
                         onClick={handleCtaClick}
-                        className="flex-1 h-full flex items-center justify-center rounded-2xl bg-primary text-white font-medium"
+                        className="px-4 py-1.5 border border-black rounded-full text-sm text-black font-medium hover:bg-black hover:text-white transition-all"
                     >
-                        <div className="px-3 py-1 bg-primary rounded-md">
-                            {user ? "Dashboard" : "Sign In / Up"}
-                        </div>
+                        {user ? "Dashboard ↗" : "Sign In / Up ↗"}
                     </button>
                 </div>
             </div>
