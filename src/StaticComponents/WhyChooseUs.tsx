@@ -58,7 +58,7 @@ export default function WhyChooseUs() {
                     {benefits.map((b) => (
                         <div
                             key={b.title}
-                            className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:shadow-md focus-within:ring-2 focus-within:ring-indigo-600"
+                            className="group rounded-2xl border border-white/20 bg-primary/30 backdrop-blur-md p-6 shadow-md transition hover:shadow-lg focus-within:ring-2 focus-within:ring-indigo-600"
                         >
                             <div className="rounded-xl bg-indigo-50 p-2 text-indigo-700 inline-flex">
                                 {b.icon}
@@ -74,7 +74,7 @@ export default function WhyChooseUs() {
                     {futureProofs.map((p) => (
                         <div
                             key={p.title}
-                            className="rounded-xl bg-indigo-600/5 p-5 ring-1 ring-indigo-600/10"
+                            className="rounded-xl border border-white/20 bg-secondary/30 backdrop-blur-md p-5 shadow-md"
                         >
                             <div className="flex items-center gap-2 text-indigo-800">
                                 {p.icon}

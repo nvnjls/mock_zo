@@ -1,6 +1,6 @@
 // src/components/Testimonials.tsx
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type Story = {
     name: string;
@@ -41,7 +41,7 @@ export default function Testimonials() {
     const [extended, headClonesCount, tailClonesCount] = (() => {
         // We don't know width at build time; assume mobile = 1 clone each side.
         // We'll correct on first layout with a teleport if needed.
-        const per = 1;
+        const per = perPageRef.current || 1;
         const head = STORIES.slice(-per);
         const tail = STORIES.slice(0, per);
         return [[...head, ...STORIES, ...tail], per, per] as const;
@@ -103,10 +103,8 @@ export default function Testimonials() {
             const lastReal = totalPages - 2;     // before tail clones
 
             if (page <= 0) {
-                // Went into head clones -> jump to matching last real page
                 node.scrollTo({ left: lastReal * pageWRef.current, behavior: "auto" });
             } else if (page >= totalPages - 1) {
-                // Went into tail clones -> jump to first real page
                 node.scrollTo({ left: firstReal * pageWRef.current, behavior: "auto" });
             }
 
@@ -139,39 +137,37 @@ export default function Testimonials() {
     };
 
     return (
-        <section id="success-stories" aria-labelledby="stories-title" className="bg-gray-50 py-16">
+        <section id="success-stories" aria-labelledby="stories-title" className="bg-gray-50 py-24">
             <div className="mx-auto max-w-7xl px-4">
-                <div className="mb-8 flex items-end justify-between gap-4">
-                    <div>
-                        <p className="inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700">
-                            Real placements • Real students
-                        </p>
-                        <h2 id="stories-title" className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
-                            Success Stories
-                        </h2>
-                        <p className="mt-2 max-w-2xl text-gray-600">
-                            Coached students who converted offers—here are a few journeys in their own words.
-                        </p>
-                    </div>
+                <div className="mb-8 text-center max-w-2xl mx-auto">
+                    <p className="inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700">
+                        Real placements • Real students
+                    </p>
+                    <h2 id="stories-title" className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
+                        You are in good hands
+                    </h2>
+                    <p className="mt-2 text-gray-600">
+                        Coached students who converted offers—here are a few journeys in their own words.
+                    </p>
+                </div>
 
-                    <div className="flex shrink-0 items-center gap-2">
-                        <button
-                            type="button"
-                            aria-label="Previous"
-                            onClick={() => pageNav(-1)}
-                            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-700"
-                        >
-                            <ChevronLeft className="size-5" aria-hidden="true" />
-                        </button>
-                        <button
-                            type="button"
-                            aria-label="Next"
-                            onClick={() => pageNav(1)}
-                            className="rounded-xl border border-gray-300 bg-white p-2 text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-700"
-                        >
-                            <ChevronRight className="size-5" aria-hidden="true" />
-                        </button>
-                    </div>
+                <div className="flex shrink-0 items-center gap-2">
+                    <button
+                        type="button"
+                        aria-label="Previous"
+                        onClick={() => pageNav(-1)}
+                        className="rounded-xl border border-gray-300 bg-white p-2 text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-700"
+                    >
+                        <ChevronLeft className="size-5" aria-hidden="true" />
+                    </button>
+                    <button
+                        type="button"
+                        aria-label="Next"
+                        onClick={() => pageNav(1)}
+                        className="rounded-xl border border-gray-300 bg-white p-2 text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-700"
+                    >
+                        <ChevronRight className="size-5" aria-hidden="true" />
+                    </button>
                 </div>
 
                 {/* Live region announces current slide */}
@@ -193,21 +189,21 @@ export default function Testimonials() {
                     <ul className="flex w-max gap-4 p-1">
                         {/* Head clones (one page worth) */}
                         {STORIES.slice(-1).map((s, i) => (
-                            <li key={`head-${i}`} className="w-[85vw] sm:w-[48vw] lg:w-[32.5vw] shrink-0" style={{ scrollSnapAlign: "start" }}>
+                            <li key={`head-${i}`} className="w-[50vw] sm:w-[30vw] lg:w-[25vw] shrink-0" style={{ scrollSnapAlign: "start" }}>
                                 <StoryCard s={s} />
                             </li>
                         ))}
 
                         {/* Real items */}
                         {STORIES.map((s, i) => (
-                            <li key={i} className="w-[85vw] sm:w-[48vw] lg:w-[32.5vw] shrink-0" style={{ scrollSnapAlign: "start" }}>
+                            <li key={i} className="w-[50vw] sm:w-[30vw] lg:w-[25vw] shrink-0" style={{ scrollSnapAlign: "start" }}>
                                 <StoryCard s={s} />
                             </li>
                         ))}
 
                         {/* Tail clones (one page worth) */}
                         {STORIES.slice(0, 1).map((s, i) => (
-                            <li key={`tail-${i}`} className="w-[85vw] sm:w-[48vw] lg:w-[32.5vw] shrink-0" style={{ scrollSnapAlign: "start" }}>
+                            <li key={`tail-${i}`} className="w-[50vw] sm:w-[30vw] lg:w-[25vw] shrink-0" style={{ scrollSnapAlign: "start" }}>
                                 <StoryCard s={s} />
                             </li>
                         ))}
@@ -224,25 +220,25 @@ export default function Testimonials() {
 
 function StoryCard({ s }: { s: Story }) {
     return (
-        <article className="h-full rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition group-hover:shadow-md">
-            <div className="flex items-center gap-4">
+        <article className="flex flex-col justify-between w-full aspect-square rounded-2xl bg-white shadow-lg transition hover:shadow-xl overflow-hidden border border-gray-100">
+            <div className="px-6 pt-6 pb-4 flex flex-col gap-4">
+                <span className="text-6xl text-indigo-400 font-bold leading-none">“</span>
+                <blockquote className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                    “{s.quote}”
+                </blockquote>
+            </div>
+            <div className="bg-gray-50 px-6 py-4 flex items-center gap-4">
                 <img
                     src={s.avatar}
                     alt={`${s.name} avatar`}
-                    className="h-14 w-14 rounded-full object-cover"
+                    className="h-10 w-10 rounded-full object-cover"
                     loading="lazy"
-                    width={56}
-                    height={56}
                 />
                 <div>
-                    <h3 className="text-base font-semibold text-gray-900">{s.name}</h3>
-                    <p className="text-sm text-indigo-700">
-                        {s.role} • {s.company}
-                    </p>
+                    <h3 className="text-sm font-semibold text-gray-900">{s.name}</h3>
+                    <p className="text-xs text-indigo-600">{s.role} • {s.company}</p>
                 </div>
-                <Quote className="ml-auto size-5 text-indigo-300" aria-hidden="true" />
             </div>
-            <blockquote className="mt-4 text-gray-700">“{s.quote}”</blockquote>
         </article>
     );
 }

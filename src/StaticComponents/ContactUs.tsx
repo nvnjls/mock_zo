@@ -43,40 +43,40 @@ export default function ContactUs() {
     };
 
     return (
-        <section id="contact" className="relative isolate px-4 sm:px-6 lg:px-8 py-16 bg-white">
-            <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-5 gap-10">
+        <section id="contact" className="relative isolate px-4 sm:px-6 lg:px-8 py-16 bg-gray-600/30 backdrop-blur-xl border border-white/10 rounded-xl">
+            <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-5 gap-10 glass-container">
                 {/* Left: Contact Card & Socials */}
                 <div className="lg:col-span-2">
-                    <div className="rounded-2xl border shadow-sm p-6 bg-gradient-to-b from-white to-gray-50">
-                        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">Contact Us</h2>
-                        <p className="mt-2 text-gray-600">Have a question about mock interviews, workshops, or our 6-week paid internships? Reach out—we usually reply within 24 hours.</p>
+                    <div className="rounded-2xl border border-white/20 shadow-md p-6 backdrop-blur-xl bg-white/10">
+                        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white/90">Contact Us</h2>
+                        <p className="mt-2 text-white/90">Have a question about mock interviews, workshops, or our 6-week paid internships? Reach out—we usually reply within 24 hours.</p>
 
                         <div className="mt-6 space-y-4">
                             <div className="flex items-start gap-3">
-                                <Mail className="h-5 w-5 mt-0.5" aria-hidden />
-                                <a href="mailto:hello@mockzo.com" className="text-sm text-gray-700 hover:underline">hello@mockzo.com</a>
+                                <Mail className="h-5 w-5 mt-0.5 text-white" aria-hidden />
+                                <a href="mailto:hello@mockzo.com" className="text-sm text-white/90 hover:underline">hello@mockzo.com</a>
                             </div>
                             <div className="flex items-start gap-3">
-                                <Phone className="h-5 w-5 mt-0.5" aria-hidden />
-                                <a href="tel:+919999999999" className="text-sm text-gray-700 hover:underline">+91 99999 99999</a>
+                                <Phone className="h-5 w-5 mt-0.5 text-white" aria-hidden />
+                                <a href="tel:+919999999999" className="text-sm text-white/90 hover:underline">+91 99999 99999</a>
                             </div>
                             <div className="flex items-start gap-3">
-                                <MapPin className="h-5 w-5 mt-0.5" aria-hidden />
-                                <p className="text-sm text-gray-700">Hyderabad, India</p>
+                                <MapPin className="h-5 w-5 mt-0.5 text-white" aria-hidden />
+                                <p className="text-sm text-white/90">Hyderabad, India</p>
                             </div>
                         </div>
 
                         <div className="mt-8">
-                            <p className="text-sm font-medium text-gray-900">Follow us</p>
+                            <p className="text-sm font-medium text-white">Follow us</p>
                             <div className="mt-3 flex items-center gap-3">
-                                <a aria-label="LinkedIn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center rounded-full border p-2 hover:shadow-sm transition">
-                                    <Linkedin className="h-5 w-5" />
+                                <a aria-label="LinkedIn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 p-2 backdrop-blur-md hover:bg-white/20 transition">
+                                    <Linkedin className="h-5 w-5 text-white" />
                                 </a>
-                                <a aria-label="Instagram" href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center rounded-full border p-2 hover:shadow-sm transition">
-                                    <Instagram className="h-5 w-5" />
+                                <a aria-label="Instagram" href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 p-2 backdrop-blur-md hover:bg-white/20 transition">
+                                    <Instagram className="h-5 w-5 text-white" />
                                 </a>
-                                <a aria-label="YouTube" href="https://www.youtube.com/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center rounded-full border p-2 hover:shadow-sm transition">
-                                    <Youtube className="h-5 w-5" />
+                                <a aria-label="YouTube" href="https://www.youtube.com/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 p-2 backdrop-blur-md hover:bg-white/20 transition">
+                                    <Youtube className="h-5 w-5 text-white" />
                                 </a>
                             </div>
                         </div>
@@ -85,11 +85,11 @@ export default function ContactUs() {
 
                 {/* Right: Message Form */}
                 <div className="lg:col-span-3">
-                    <div className="rounded-2xl border shadow-sm p-6">
+                    <div className="rounded-2xl border border-white/20 shadow-md p-6 backdrop-blur-xl bg-white/10">
                         {!submitted ? (
                             <>
-                                <h3 className="text-xl font-semibold">Send us a message</h3>
-                                <p className="mt-1 text-sm text-gray-600">Fill this out and it will land in our Google Form instantly.</p>
+                                <h3 className="text-xl font-semibold text-white">Send us a message</h3>
+                                <p className="mt-1 text-sm text-white/70">Fill this out and it will land in our Google Form instantly.</p>
 
                                 {/* Hidden iframe to swallow the Google Forms redirect */}
                                 <iframe
@@ -114,55 +114,55 @@ export default function ContactUs() {
 
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-900">Name</label>
+                                            <label className="block text-sm font-medium text-white">Name</label>
                                             <input
                                                 required
                                                 name={ENTRY_NAME}
                                                 type="text"
                                                 placeholder="Your full name"
-                                                className="mt-1 w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-500"
+                                                className="mt-1 w-full rounded-xl border border-white/30 bg-white/10 px-3 py-2 text-white placeholder-white/50 outline-none focus:ring-2 focus:ring-indigo-500"
                                             />
                                         </div>
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-900">Email</label>
+                                            <label className="block text-sm font-medium text-white">Email</label>
                                             <input
                                                 required
                                                 name={ENTRY_EMAIL}
                                                 type="email"
                                                 placeholder="you@example.com"
-                                                className="mt-1 w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-500"
+                                                className="mt-1 w-full rounded-xl border border-white/30 bg-white/10 px-3 py-2 text-white placeholder-white/50 outline-none focus:ring-2 focus:ring-indigo-500"
                                             />
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-900">Subject</label>
+                                        <label className="block text-sm font-medium text-white">Subject</label>
                                         <input
                                             required
                                             name={ENTRY_SUBJECT}
                                             type="text"
                                             placeholder="e.g., Book a mock interview"
-                                            className="mt-1 w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-500"
+                                            className="mt-1 w-full rounded-xl border border-white/30 bg-white/10 px-3 py-2 text-white placeholder-white/50 outline-none focus:ring-2 focus:ring-indigo-500"
                                         />
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-900">Message</label>
+                                        <label className="block text-sm font-medium text-white">Message</label>
                                         <textarea
                                             required
                                             name={ENTRY_MESSAGE}
                                             rows={6}
                                             placeholder="Tell us what you need help with…"
-                                            className="mt-1 w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-500"
+                                            className="mt-1 w-full rounded-xl border border-white/30 bg-white/10 px-3 py-2 text-white placeholder-white/50 outline-none focus:ring-2 focus:ring-indigo-500"
                                         />
                                     </div>
 
                                     <div className="flex items-center justify-between pt-2">
-                                        <p className="text-xs text-gray-500">This form posts to Google Forms. We never store your data on our servers.</p>
+                                        <p className="text-xs text-white/70">This form posts to Google Forms. We never store your data on our servers.</p>
                                         <button
                                             type="submit"
                                             disabled={submitting}
-                                            className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 active:scale-[0.98] disabled:opacity-60"
+                                            className="inline-flex items-center gap-2 rounded-xl bg-primary border border-white/30 px-4 py-2 text-white hover:bg-primary/90 active:scale-[0.98] disabled:opacity-60 backdrop-blur-md"
                                         >
                                             <Send className="h-4 w-4" />
                                             {submitting ? "Sending…" : "Send Message"}
@@ -171,10 +171,10 @@ export default function ContactUs() {
                                 </form>
                             </>
                         ) : (
-                            <div className="flex flex-col items-center justify-center py-16 text-center">
-                                <CheckCircle2 className="h-12 w-12" />
-                                <h4 className="mt-4 text-xl font-semibold">Message sent!</h4>
-                                <p className="mt-1 text-gray-600 max-w-md">Thanks for reaching out. We’ve received your details via Google Forms and will get back to you shortly.</p>
+                            <div className="flex flex-col items-center justify-center py-16 text-center backdrop-blur-lg bg-white/10 rounded-xl shadow-md border border-white/20 px-6">
+                                <CheckCircle2 className="h-12 w-12 text-white" />
+                                <h4 className="mt-4 text-xl font-semibold text-white">Message sent!</h4>
+                                <p className="mt-1 text-white/70 max-w-md">Thanks for reaching out. We’ve received your details via Google Forms and will get back to you shortly.</p>
                                 <button
                                     onClick={() => setSubmitted(false)}
                                     className="mt-6 inline-flex items-center gap-2 rounded-xl border px-4 py-2 hover:bg-gray-50"
