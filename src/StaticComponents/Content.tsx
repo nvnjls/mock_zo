@@ -1,10 +1,5 @@
 import React, { forwardRef } from 'react';
-import HowItWorks from './HowItWorks';
-import WhyChooseUs from './WhyChooseUs';
-import TargetAudience from './TargetAudience';
-import Testimonials from './Testimonials';
 import FAQ from './FAQ';
-import StatsComponent from './StatsComponent';
 import Navbar from './Nav';
 import WhyCandidatesFail from './WhyStudentsFail';
 import ContactUs from './ContactUs';

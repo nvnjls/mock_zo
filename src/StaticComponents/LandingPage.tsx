@@ -10,7 +10,29 @@ import { Button } from "@headlessui/react";
 const db = getFirestore();
 
 
-type ExperienceType = "mock" | "internship" | "workshop";
+type ExperienceType = "mockInterview"
+    | "internship"
+    | "workshop"
+
+const handleSectionClick = (id: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    const container = document.getElementById("content");
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    // Prefer scrolling the internal container if present
+    if (container) {
+        const containerTop = container.getBoundingClientRect().top;
+        const targetTop = target.getBoundingClientRect().top;
+        const current = container.scrollTop;
+        // Sections already use `scroll-mt-16`; no extra offset required here
+        const nextTop = current + (targetTop - containerTop);
+        container.scrollTo({ top: nextTop, behavior: "smooth" });
+    } else {
+        // Fallback to default behavior
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+};
 
 const CTACard = ({
     title,
@@ -38,7 +60,7 @@ const CTACard = ({
 );
 
 export default function LandingPage() {
-    const gradient = "bg-gradient-to-r from-primary to-secondary";
+    const gradient = "bg-gradient-to-b from-primary to-secondary";
 
     const [user, setUser] = useState<User | null>(null);
 
@@ -141,7 +163,7 @@ export default function LandingPage() {
                         title: "Mock Interviews",
                         description: "Crack your next interview before it even happens.",
                         buttonText: "Book Now",
-                        type: "mock" as ExperienceType,
+                        type: "mockInterview" as ExperienceType,
                     },
                     {
                         title: "Internships",
@@ -160,7 +182,7 @@ export default function LandingPage() {
                         key={idx}
                         // className="z-10 bg-white/20 backdrop-blur-md border border-white/30 rounded-xl shadow-lg p-6 flex flex-col items-center text-center transition-transform duration-300 hover:translate-y-3 mt-12"
 
-                        className={`relative rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200  min-h-[180px] backdrop-blur-xl p-6 flex flex-col justify-between gap-4  ${type === "mock"
+                        className={`relative rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200  min-h-[180px] backdrop-blur-xl p-6 flex flex-col justify-between gap-4  ${type === "mockInterview"
                             ? "bg-primary"
                             : type === "internship"
                                 ? "bg-tertiary"
@@ -178,8 +200,8 @@ export default function LandingPage() {
                                 {buttonText}
                             </Button>
                             <Button
-                                onClick={() => openAuth(type)}
-                                className={`h-12 w-12 flex items-center justify-center rounded-full ${type === "mock"
+                                onClick={() => handleSectionClick(type)}
+                                className={`h-12 w-12 flex items-center justify-center rounded-full ${type === "mockInterview"
                                     ? "bg-primary"
                                     : type === "internship"
                                         ? "bg-tertiary"
