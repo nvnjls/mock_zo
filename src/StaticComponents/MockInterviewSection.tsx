@@ -11,23 +11,23 @@ type Step = {
 const steps: Step[] = [
     {
         number: 1,
-        title: "Choose Your Mock Type",
-        description: "Set the date, pick a slot. We’ll match you with a coach and share a detailed rubric.",
+        title: "Choose mock interview type",
+        description: "Pick your interview type and set your slot.",
     },
     {
         number: 2,
-        title: "Meet Real Professionals",
-        description: "Get interviewed by actual hiring managers and receive actionable feedback.",
+        title: "Meet real professionals",
+        description: "Practice with actual hiring managers.",
     },
     {
         number: 3,
-        title: "Complete Analysis",
-        description: "Access deep analysis on your resume, technical prowess, and communication.",
+        title: "Get analysis",
+        description: "Receive insights on resume, technical, and communication.",
     },
     {
         number: 4,
-        title: "Dashboard & Analytics",
-        description: "Comprehensive analytics track your progress and improvement over time.",
+        title: "Track progress",
+        description: "View your growth with dashboards and analytics.",
     },
 ];
 
@@ -78,7 +78,7 @@ const MockInterviewSection: React.FC = () => (
                     <span className="inline-block rounded-full bg-gradient-to-r from-accent to-orange-400 text-white font-bold mb-5 shadow-lg">
                         We have the best team and best process
                     </span>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight drop-shadow-lg">
+                    <h2 className="text-4xl sm:text-4xl md:text-4xl font-extrabold text-white mb-4 leading-tight drop-shadow-lg">
                         Crack your next interview before it even happens
 
                     </h2>

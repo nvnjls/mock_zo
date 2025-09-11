@@ -6,6 +6,7 @@ import AdminPanel from './Admin/AdminPanel';
 import AdminRoute from './Admin/AdminRoute';
 import AdminLogin from './Admin/AdminLogin';
 import OnboardingPage from './DynamicPages/Onboarding/Components/OnboardingPage';
+import LegalPage from './StaticComponents/Legal';
 
 const App = () => {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -53,8 +54,8 @@ const App = () => {
         />
         {/* Optional direct login page */}
         <Route path="/admin-login" element={<AdminLogin />} />
-        {/* Default: send unknown routes to /NotFound for now */}
-        <Route path="*" element={<Navigate to="/NotFound" replace />} />
+        {/* Default: send unknown routes to / for now */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );

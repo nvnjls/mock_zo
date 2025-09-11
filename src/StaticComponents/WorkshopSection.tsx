@@ -77,7 +77,7 @@ const WorkshopSection: React.FC = () => (
                     <span className="inline-block rounded-full bg-gradient-to-r from-accent to-orange-400 text-white font-bold mb-5 shadow-lg">
                         Live, hands‑on workshops for students & teams
                     </span>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight drop-shadow-lg">
+                    <h2 className="text-4xl sm:text-4xl md:text-4xl font-extrabold text-white mb-4 leading-tight drop-shadow-lg">
                         Master job‑ready skills with expert‑led workshops
 
                     </h2>

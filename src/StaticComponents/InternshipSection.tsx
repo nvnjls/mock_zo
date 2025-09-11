@@ -77,7 +77,7 @@ const InternshipSection: React.FC = () => (
                     <span className="inline-block rounded-full bg-gradient-to-r from-accent to-orange-400 text-white font-bold mb-5 shadow-lg">
                         Industry‑guided internships with real deliverables
                     </span>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight drop-shadow-lg">
+                    <h2 className="text-4xl sm:text-4xl md:text-4xl font-extrabold text-white mb-4 leading-tight drop-shadow-lg">
                         Start your internship journey with confidence
 
                     </h2>

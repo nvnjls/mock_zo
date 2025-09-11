@@ -75,8 +75,34 @@ const FAQ = () => {
     };
 
     return (
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-background bg-opacity-20">
-            <div className="max-w-7xl mx-auto">
+        <section className="relative overflow-hidden py-16 px-4 sm:px-6 lg:px-8 bg-background bg-opacity-20">
+            <div className="absolute top-0 left-0 right-0 h-[20%] overflow-hidden z-0">
+                <svg
+                    className="w-full h-full opacity-50 pointer-events-none"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 1440 320"
+                    preserveAspectRatio="none"
+                >
+                    <path
+                        fill="#3b82f6ff"
+                        fillOpacity="1"
+                        d="M0,96C240,160,480,32,720,96C960,160,1200,32,1440,96V224C1200,160,960,288,720,224C480,160,240,288,0,224Z"
+                    />
+                    <path
+                        fill="#636ff6ff"
+                        fillOpacity="1"
+                        d="M0,160C240,120,480,200,720,160C960,120,1200,200,1440,160V288C1200,240,960,320,720,288C480,256,240,320,0,288Z"
+                    />
+                    <path
+                        fill="#8b5cf6ff"
+                        fillOpacity="1"
+                        d="M0,192C240,256,480,128,720,192C960,256,1200,128,1440,192V320C1200,288,960,384,720,320C480,256,240,320,0,288Z"
+                    />
+                </svg>
+            </div>
+            <div className="relative z-10 max-w-7xl mx-auto">
                 <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-textTitle mb-3">
                         <span className="relative inline-block">
@@ -96,13 +122,13 @@ const FAQ = () => {
                         </button>
                         <button
                             onClick={() => switchTab("internship")}
-                            className={`px-4 py-2 rounded-full text-sm font-semibold border transition ${activeTab === "internship" ? "bg-primary text-white border-primary" : "bg-white/20 text-textTitle border-white/30 hover:bg-white/30"}`}
+                            className={`px-4 py-2 rounded-full text-sm font-semibold border transition ${activeTab === "internship" ? "bg-tertiary text-white border-primary" : "bg-white/20 text-textTitle border-white/30 hover:bg-white/30"}`}
                         >
                             Internships
                         </button>
                         <button
                             onClick={() => switchTab("workshop")}
-                            className={`px-4 py-2 rounded-full text-sm font-semibold border transition ${activeTab === "workshop" ? "bg-primary text-white border-primary" : "bg-white/20 text-textTitle border-white/30 hover:bg-white/30"}`}
+                            className={`px-4 py-2 rounded-full text-sm font-semibold border transition ${activeTab === "workshop" ? "bg-secondary text-white border-secondary" : "bg-white/20 text-textTitle border-white/30 hover:bg-white/30"}`}
                         >
                             Workshops
                         </button>
@@ -117,7 +143,7 @@ const FAQ = () => {
                     {currentFaqs.map((faq, index) => (
                         <div
                             key={index}
-                            className="group relative w-full sm:w-[48%] lg:w-[32%] rounded-xl border backdrop-blur-md bg-gray-300/70 shadow-lg border-white/20 transition-all duration-300 flex flex-col"
+                            className="group relative w-full sm:w-[48%] lg:w-[32%] border-l-4 border-primary rounded-xl hover:shadow-xl ring-1 ring-primary/10 backdrop-blur-md bg-gradient-to-br from-white/80 to-gray-100/70 shadow-lg border-white/20 transition-all duration-300 flex flex-col"
                         >
                             <button
                                 className="w-full flex justify-between items-center text-left px-4 h-[60px] focus:outline-none"
@@ -125,7 +151,7 @@ const FAQ = () => {
                                 aria-expanded={activeIndex === index}
                                 aria-controls={`faq-${activeTab}-${index}`}
                             >
-                                <h3 className="text-lg font-medium text-textTitle flex items-center gap-2">
+                                <h3 className="text-lg font-medium text-gray-900 group-hover:font-semibold flex items-center gap-2">
                                     {faq.question}
                                     <span
                                         className={`transition-colors duration-300 ${activeIndex === index ? 'text-primary' : 'text-textTitle'} md:inline-block hidden`}
@@ -138,8 +164,8 @@ const FAQ = () => {
                                         ?
                                     </span>
                                 </h3>
-                                <div className="hidden md:block absolute top-[-100%] left-1/2 -translate-x-1/2 z-20 w-72 rounded-xl bg-black/80 backdrop-blur-md border border-white/30 px-4 py-3 text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                                    <div className="absolute left-1/2 translate-x-[-50%] bottom-[-10px] w-4 h-4 bg-white/20 border-l border-b border-white/30 rotate-45"></div>
+                                <div className="hidden md:block absolute top-[-100%] left-1/2 -translate-x-1/2 z-20 w-72 rounded-xl bg-gray-900/90 text-white backdrop-blur-md border border-white/10 px-4 py-3 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                                    <div className="absolute left-1/2 translate-x-[-50%] bottom-[-10px] w-4 h-4 bg-white/20 border-l border-b border-white/10 rotate-45"></div>
                                     {faq.answer}
                                 </div>
                                 <svg
@@ -154,7 +180,7 @@ const FAQ = () => {
 
                             <div
                                 id={`faq-${activeTab}-${index}`}
-                                className={`px-4 pb-4 pt-0 text-sm transition-all duration-300 ease-in-out ${activeIndex === index ? 'block opacity-100' : 'hidden opacity-0'}`}
+                                className={`px-4 pb-4 pt-0 text-sm transition-all duration-300 ease-in-out ${activeIndex === index ? 'block opacity-100 bg-white/90 rounded-b-xl shadow-inner p-4' : 'hidden opacity-0'}`}
                             >
                                 <p className="text-textPrimary">{faq.answer}</p>
                             </div>

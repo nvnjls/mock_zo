@@ -4,8 +4,8 @@ module.exports = {
     extend: {
       colors: {
         primary: 'rgba(59, 130, 246, 1)',
-        secondary: 'rgba(139, 92, 246, 1)',
-        tertiary: 'rgba(99, 111, 246, 1)',
+        secondary: '#8b5cf6ff',
+        tertiary: '#636ff6ff',
         accent: 'rgb(246, 175, 59)',
         info: 'rgb(96, 165, 250)',         // #60A5FA
         neutral: 'rgb(51, 65, 85)',        // #334155
@@ -44,7 +44,6 @@ module.exports = {
     }
   },
   plugins: [
-    require('tailwind-scrollbar-hide'),
     require('daisyui'),
     require('@tailwindcss/typography')
   ],

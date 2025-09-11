@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.scrollbar-primary::-webkit-scrollbar-thumb {
+  background-color: #3b82f6;
+}
+
+.scrollbar-secondary::-webkit-scrollbar-thumb {
+  background-color: #8b5cf6;
+}
+
+.scrollbar-tertiary::-webkit-scrollbar-thumb {
+  background-color: #f59e0b;
+}
+
 /* Custom styles */
 .sidebar {
   transition: all 0.3s;
@@ -76,6 +89,6 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: auto;
   /* Allow scrolling */
 }

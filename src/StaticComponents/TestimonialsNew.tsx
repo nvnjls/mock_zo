@@ -1,4 +1,8 @@
+// TestimonialsNew.tsx
+
 import React, { useEffect, useMemo, useState } from 'react';
+
+const BG_OPACITY = 0.85; // Adjust background opacity here
 
 // Types
 type Category = 'mock' | 'workshop' | 'internship';
@@ -18,6 +22,7 @@ type Bubble = Testimonial & {
     delay: number; // seconds
     duration: number; // seconds
 };
+
 const gradient = "bg-gradient-to-r from-primary to-secondary";
 
 // Sample Data
@@ -245,6 +250,7 @@ const FloatingCard: React.FC<{ b: Bubble; z?: number }> = ({ b, z = 0 }) => {
         animationDelay: `${b.delay}s`,
         animationDuration: `${b.duration}s`,
         zIndex: z,
+        transform: 'translateX(-20px)',
         transformOrigin: 'top left',
     };
 
@@ -295,7 +301,11 @@ const TestimonialsNew: React.FC = () => {
     }, [canvas.w, canvas.h, bubbleCount]);
 
     return (
-        <section className={`relative ${gradient} overflow-hidden min-h-screen py-16 sm:py-20 lg:py-20 lg:max-h-screen lg:overflow-hidden`} aria-labelledby="testimonials-heading">
+        <section
+            className="relative overflow-hidden min-h-screen py-16 sm:py-20 lg:py-20 lg:max-h-screen lg:overflow-hidden"
+            style={{ background: 'linear-gradient(to right, var(--tw-gradient-from, #3b82f6), var(--tw-gradient-to, #8b5cf6))', opacity: BG_OPACITY }}
+            aria-labelledby="testimonials-heading"
+        >
 
             <div className="relative max-w-7xl mx-auto  px-4 sm:px-6 lg:px-8">
                 <header className="text-center mb-10">
@@ -308,14 +318,22 @@ const TestimonialsNew: React.FC = () => {
                 </header>
 
                 {/* Floating canvas */}
-                <div ref={canvasRef} className="relative mx-auto min-h-[620px] sm:min-h-[720px] md:min-h-[780px] lg:min-h-0 lg:h-[78vh] lg:max-h-[78vh]">
+                <div
+                    ref={canvasRef}
+                    className="relative z-30 mx-auto w-screen min-h-[620px] sm:min-h-[720px] md:min-h-[780px] lg:min-h-0 lg:h-[78vh] lg:max-h-[78vh] left-1/2 right-1/2 -translate-x-1/2"
+                // The local stacking context, ensures bubbles do not overlay nav bar
+                >
                     {/* Animated bubbles */}
                     <div className="absolute inset-0 motion-reduce:hidden" aria-hidden="true">
                         {mounted && bubbles.map((b, i) => (
                             <FloatingCard
-                                key={`${b.id}-${b.top.toFixed(2)}-${b.left.toFixed(2)}`}
-                                b={b}
-                                z={bubbles.length - i}
+                                key={`${b.id}-${b.top.toFixed(50)}-${b.left.toFixed(50)}`}
+                                b={{
+                                    ...b,
+                                    top: Math.max(0, b.top - 6),
+                                    left: Math.max(0, b.left - 7),
+                                }}
+                                z={i}
                             />
                         ))}
                     </div>

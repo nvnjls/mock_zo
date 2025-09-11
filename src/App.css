@@ -37,17 +37,3 @@
     transform: rotate(360deg);
   }
 }
-
-/* Chrome, Edge, Safari */
-.scroll-hidden::-webkit-scrollbar {
-  display: none;
-  width: 0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-/* Firefox */
-.scroll-hidden {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
